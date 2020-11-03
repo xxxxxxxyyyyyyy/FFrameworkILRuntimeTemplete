@@ -1,3 +1,6 @@
 [submodule "Assets/Framework"]
 	path = Assets/Framework
 	url = ./Assets/Framework
+[submodule "Assets/Framework.IL"]
+	path = Assets/Framework.IL
+	url = git@code.aliyun.com:fujisheng9/Framework.ILRuntime.git
