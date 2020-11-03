@@ -1,4 +1,14 @@
 {
+  "scopedRegistries": [
+    {
+      "name": "ILRuntime",
+      "url": "https://registry.npmjs.org",
+      "scopes": [
+        "com.ourpalm"
+      ]
+    }
+  ],
+
   "dependencies": {
     "com.unity.addressables": "1.8.4",
     "com.unity.collab-proxy": "1.2.16",
@@ -38,6 +48,7 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "com.ourpalm.ilruntime": "1.6.5"
   }
 }
