@@ -9,6 +9,7 @@ namespace Game.Hotfix
         {
             Debug.Log($"aaaaa{Layer.POPUP}");
             Debug.Log("hello ilruntime");
+            Debug.Log("你在干啥呢");
         }
     }
 }
