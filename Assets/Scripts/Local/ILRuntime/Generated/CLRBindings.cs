@@ -41,7 +41,6 @@ namespace ILRuntime.Runtime.Generated
             Framework_Module_Resource_ResourceLoader_Binding.Register(app);
             System_Threading_Tasks_Task_1_GameObject_Binding.Register(app);
             System_Runtime_CompilerServices_TaskAwaiter_1_GameObject_Binding.Register(app);
-            System_Collections_Generic_Dictionary_2_String_ILRuntime_Runtime_Adaptors_AttributeAdaptor_Binding_Adaptor_Binding.Register(app);
             System_Collections_Generic_Dictionary_2_String_ILTypeInstance_Binding.Register(app);
             System_Runtime_CompilerServices_AsyncTaskMethodBuilder_1_GameObject_Binding.Register(app);
             System_Collections_Generic_Dictionary_2_String_GameObject_Binding.Register(app);
@@ -53,6 +52,7 @@ namespace ILRuntime.Runtime.Generated
             System_Collections_Generic_Dictionary_2_String_List_1_ILTypeInstance_Binding.Register(app);
             System_Collections_Generic_Dictionary_2_String_ILTypeInstance_Binding_ValueCollection_Binding.Register(app);
             System_Collections_Generic_Dictionary_2_String_ILTypeInstance_Binding_ValueCollection_Binding_Enumerator_Binding.Register(app);
+            System_ValueTuple_3_Int32_String_Boolean_Binding.Register(app);
 
             ILRuntime.CLR.TypeSystem.CLRType __clrType = null;
             __clrType = (ILRuntime.CLR.TypeSystem.CLRType)app.GetType (typeof(UnityEngine.Vector3));

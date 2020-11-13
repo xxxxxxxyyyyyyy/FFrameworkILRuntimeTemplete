@@ -1,6 +1,10 @@
 ﻿#if UNITY_EDITOR
+using Framework.Utility;
 using Game.Local.IL.Reginster;
+using ILRuntime.Mono.Cecil.Pdb;
+using System.IO;
 using UnityEditor;
+using UnityEngine;
 
 namespace Game.Editor
 {
@@ -12,10 +16,8 @@ namespace Game.Editor
         {
             //用新的分析热更dll调用引用来生成绑定代码
             ILRuntime.Runtime.Enviorment.AppDomain domain = new ILRuntime.Runtime.Enviorment.AppDomain();
-            System.IO.FileStream fs1 = new System.IO.FileStream("Assets/Sources/Code/Framework.IL.Hotfix.dll.bytes", System.IO.FileMode.Open, System.IO.FileAccess.Read);
-            System.IO.FileStream fs2 = new System.IO.FileStream("Assets/Sources/Code/Game.Hotfix.dll.bytes", System.IO.FileMode.Open, System.IO.FileAccess.Read);
-            domain.LoadAssembly(fs1);
-            domain.LoadAssembly(fs2);
+            LoadDll(domain, "Assets/Sources/Code/Framework.IL.Hotfix.dll.bytes", out MemoryStream hotFixStream);
+            LoadDll(domain, "Assets/Sources/Code/Game.Hotfix.dll.bytes", out MemoryStream gameStream);
 
             //Crossbind Adapter is needed to generate the correct binding code
             var adaptor = new AdaptorReginster(); 
@@ -30,6 +32,14 @@ namespace Game.Editor
             ILRuntime.Runtime.CLRBinding.BindingCodeGenerator.GenerateBindingCode(domain, "Assets/Scripts/Local/ILRuntime/Generated");
 
             AssetDatabase.Refresh();
+        }
+
+        static void LoadDll(ILRuntime.Runtime.Enviorment.AppDomain domain , string dllName, out MemoryStream dllStream)
+        {
+            TextAsset dllAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(dllName);
+            dllStream = new MemoryStream(EncryptionUtility.AESDecrypt(dllAsset.bytes));
+
+            domain.LoadAssembly(dllStream);
         }
     }
 }
